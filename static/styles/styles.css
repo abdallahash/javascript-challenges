@@ -1,0 +1,86 @@
+.container-1, .container-2, .container-3, .container-4, .container-5 {
+    border: 1px solid black;
+    margin: 0 auto;
+    width: 75%;
+    text-align: center;
+}
+
+.flex-box-container-1, .flex-box-container-2, .flex-box-rps, .flex-box-pick-color,
+.flex-box-blackjack-row-1, .flex-box-blackjack-row-2, .flex-box-blackjack-row-3 {
+    padding : 10px;
+    display: flex;
+    border: 1px solid black;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.flex-box-blackjack-row-1, .flex-box-blackjack-row-2{
+    color: whitesmoke;
+    background: url('https://wallimpex.com/data/out/37/cool-green-wallpapers-4340276.jpg') center;   
+}
+
+.flex-box-blackjack-row-1 div{
+    border: 1px solid black;
+    padding: 10px;
+    flex: 1;
+    height: 350px;
+    text-align: center;
+}
+
+.flex-box-blackjack-row-1 img{
+    width: 25%;
+    padding: 10px;
+
+}
+
+.flex-box-blackjack-row-2 button{
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.flex-box-blackjack-row-2 div{
+    border: 1px solid black;
+    padding: 6px;
+    
+}
+
+table th, tr{
+    padding: 5px;
+    border: 1px solid blue;
+    text-align: center;
+}
+
+.win-table {
+    background-color: green;
+    color: white;
+}
+
+.loss-table {
+    background-color: red;
+    color: white;
+
+}
+
+.draw-table {
+    background-color: orange;
+    color: white;
+}
+
+.flex-box-container-1 div {
+    display: flex;
+    
+}
+
+.flex-box-container-2 img {
+    margin: 10px; 
+    box-shadow: 0px 0px 32px -1px rgba(135,71,8,1);
+}
+.flex-box-rps img:hover{
+    box-shadow: 0px 0px 30px 6px rgba(50,97,207,1);
+}
+button a { 
+    text-decoration: none;
+    color: white;
+
+}
