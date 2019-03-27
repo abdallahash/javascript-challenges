@@ -6,7 +6,8 @@
 }
 
 .flex-box-container-1, .flex-box-container-2, .flex-box-rps, .flex-box-pick-color,
-.flex-box-blackjack-row-1, .flex-box-blackjack-row-2, .flex-box-blackjack-row-3 {
+.flex-box-blackjack-row-1, .flex-box-blackjack-row-2, .flex-box-blackjack-row-3,
+.flex-box-rps-row-2, .flex-box-rps-table {
     padding : 10px;
     display: flex;
     border: 1px solid black;
@@ -46,7 +47,7 @@
 }
 
 table th, tr{
-    padding: 5px;
+    padding: 10px;
     border: 1px solid blue;
     text-align: center;
 }

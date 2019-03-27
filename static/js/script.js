@@ -32,6 +32,12 @@ console.log(items)
 
 // Challenge 3 Rock, papper, scissors // 
 
+let rpsGame = {
+    'wins' : 0,
+    'losses' : 0,
+    'draws' : 0,
+}
+
 function rpsgame(choice){
     // console.log(choice.id);
     var humanchoice , botchoice;
@@ -42,9 +48,19 @@ function rpsgame(choice){
     results = decidewinner(humanchoice, botchoice)
     console.log(results);
     message = final_message(results);
+    
+    rpscomputResults(results);
+
     console.log(message);
     rpsfrontend(humanchoice, botchoice, message);
 }
+// making the rock paper scissor as globel variable to be used later by different functions.
+
+ROCK = document.getElementById('rock')
+PAPER = document.getElementById('paper')
+SCISSOR = document.getElementById('scissor')
+
+const chichang = new Audio("static/sounds/Cha_Ching_Register.mp3");
 
 function random_rps_int() {
     return Math.floor(Math.random()*3);
@@ -76,6 +92,24 @@ function final_message([yourScore, computerscore]) {
     }
 }
 
+function rpscomputResults([playerscore, botscore]) {
+    if (playerscore === 1){
+        rpsGame['wins']++;
+        chichang.play();
+    } else if (playerscore === 0.5) {
+        rpsGame['draws']++;
+    } else {
+        rpsGame['losses']++;
+    }
+
+    console.log('wins', rpsGame['wins'])
+    // to show the wins losses and draws on the front end of rps table 
+    document.querySelector('#rpswin').textContent = rpsGame['wins'];
+    document.querySelector('#rpsloss').textContent = rpsGame['losses'];
+    document.querySelector('#rpsdraw').textContent = rpsGame['draws'];
+
+}
+
 function rpsfrontend(humanImageChoice, botImageChoice, finalmessage) {
     var imagesDatabase = {
         'rock': document.getElementById('rock').src,
@@ -84,9 +118,12 @@ function rpsfrontend(humanImageChoice, botImageChoice, finalmessage) {
     }
 
     // let's remove all the images on the click
-    document.getElementById('rock').remove();
-    document.getElementById('paper').remove();
-    document.getElementById('scissor').remove();
+    //document.getElementById('rock').remove();
+    //document.getElementById('paper').remove();
+    //document.getElementById('scissor').remove();
+    ROCK.remove();
+    PAPER.remove();
+    SCISSOR.remove();
 
     var humandiv = document.createElement('div');
     var botdiv = document.createElement('div');
@@ -100,6 +137,27 @@ function rpsfrontend(humanImageChoice, botImageChoice, finalmessage) {
     document.getElementById('flex-box-rps-div').appendChild(messagediv)
     document.getElementById('flex-box-rps-div').appendChild(botdiv)
 }
+
+document.querySelector('#rpsplay').addEventListener('click', rpsplayagain);
+
+function rpsplayagain() {
+    
+    let elements = document.querySelectorAll('#flex-box-rps-div div');
+    for (let i =0; i<elements.length; i++){
+        elements[i].remove()
+    }
+   console.log(ROCK);
+
+    document.querySelector('#flex-box-rps-div').appendChild(ROCK);
+    document.querySelector('#flex-box-rps-div').appendChild(PAPER);
+    document.querySelector('#flex-box-rps-div').appendChild(SCISSOR);
+
+
+
+    //console.dir(elements);
+}
+
+
 
 // ---> Challenge 4 change the color for all the Buttons <----\\ 
 
