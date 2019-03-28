@@ -262,20 +262,27 @@ function blackjackhit() {
     }
 }
 
+// selecting a random card from the card database in blackjack game dictionary 
+// 'card' = ["2","3","4","5","6","7",..."A"],
 function randomcard(){
     let randomIndex = Math.floor(Math.random()*13);
     return blackjackGame['card'][randomIndex]; 
 }
 
+//showcard takes the card from the ^ randomcard function and turns it to a sorce link to the image file 
+// To take that specific image, if the card is 'Q' --> static/images/Q.png 
 function showcard(card , activeplayer){
     if (activeplayer['score'] <= 21) {
         let cardimage = document.createElement('img');
         cardimage.src=`static/images/${card}.png`;
+        //once we get the image then we can add it to the player's table 
         document.querySelector(activeplayer['div']).appendChild(cardimage);
         hitsound.play();
-}
+    }
 }
 
+// After user and dealer play a game the deal fuction resets the green board for them to play again
+// which means deleting the images from the board, reseting the score and the message on top to Let's play
 function blackjackDeal() {
 
     if (blackjackGame['turnsOver'] === true) {
@@ -311,6 +318,8 @@ function blackjackDeal() {
 }
 
 function updateScore(card, activeplayer){
+    // 'A' in black jack has 2 values [1,11] 1 when the over all score + A <= 21 
+    // and 11 when the over all score + A >= 21
     if (card === 'A'){
         if (activeplayer['score'] + blackjackGame['cardsmap'][card][1] <= 21){
             activeplayer['score'] += blackjackGame['cardsmap'][card][1];
@@ -322,12 +331,14 @@ function updateScore(card, activeplayer){
     }
 
 }
-
+// speacking to the html and changing the score as the players play
 function showScore(activeplayer) {
+    //when the player score is > 21 they already lose the game regardless of other player score AKA (BUST!)
     if (activeplayer['score'] > 21){
         document.querySelector(activeplayer['scorespan']).textContent = 'BUST!';
         document.querySelector(activeplayer['scorespan']).style.color = 'red';
     } else {
+        // if they don't BUST just show the score on the green board.
     document.querySelector(activeplayer['scorespan']).textContent = activeplayer['score'];
     }
 }
@@ -354,7 +365,8 @@ async function dealerLogic() {
 }
 
 // Teach the computer how to determine the WIN!!???
-//Then show the result of who won and play the sound..
+//Then show the result of who won.
+// also updates the win, loss, draw table below the board
 
 function computWinner(){
     let winner;
@@ -385,6 +397,9 @@ function computWinner(){
     document.querySelector('#draw').textContent = blackjackGame['draws'];
     return winner;
 }
+
+// It takes the winner and display a message to the player if he won lost, or drew.
+// and also play the soundeffect. 
 
 function showresult(winner){
     if (blackjackGame['turnsOver'] === true) {
