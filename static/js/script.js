@@ -343,10 +343,12 @@ function showScore(activeplayer) {
     }
 }
 
+// the sleep function makes the bot wait for one secound before playing the next card.
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+// making it to an async function to be able to use await 
 async function dealerLogic() {
     blackjackGame['stand'] = true;
     while (DEALER['score'] < 16 && blackjackGame['stand'] === true) {
